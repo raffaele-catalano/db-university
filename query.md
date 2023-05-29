@@ -43,3 +43,28 @@ laurea *(286)*
     - SELECT *  
     FROM `teachers`  
     WHERE `phone` IS NULL;
+
+## BONUS
+- Contare quanti iscritti ci sono stati ogni anno
+    - SELECT COUNT(*) AS `numero_iscritti`,  YEAR(`enrolment_date`) AS `anno_accademico`  
+FROM `students`  
+GROUP BY `anno_accademico`  
+ORDER BY `anno_accademico`;
+
+- Contare gli insegnanti che hanno l'ufficio nello stesso edificio
+    - SELECT COUNT(*) AS `numero_insegnanti`, `office_address` AS `indirizzo_ufficio`  
+FROM `teachers`  
+GROUP BY `indirizzo_ufficio`  
+HAVING `numero_insegnanti` <> 1  
+ORDER BY `numero_insegnanti`;
+
+- Calcolare la media dei voti di ogni appello d'esame
+    - SELECT AVG(`vote`) AS `media_voti`, `exam_id` AS `appello_esame`  
+FROM `exam_student`  
+GROUP BY `appello_esame`  
+ORDER BY `appello_esame`;
+
+- Contare quanti corsi di laurea ci sono per ogni dipartimento
+    - SELECT COUNT(*) AS `corsi_di_laurea`, `department_id` AS `dipartimento`  
+FROM `degrees`  
+GROUP BY `dipartimento`;  
