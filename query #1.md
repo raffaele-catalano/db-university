@@ -25,7 +25,7 @@ laurea *(286)*
     SELECT *  
     FROM `courses`
     WHERE `year` = 1  
-    AND     ```
+    AND
     `period` = 'I semestre';
     ```
 - Selezionare tutti gli appelli d'esame che avvengono nel pomeriggio (dopo le 14) del
@@ -34,7 +34,7 @@ laurea *(286)*
     SELECT *  
     FROM `exams`  
     WHERE HOUR(`hour`) >= 14  
-    AND     ```
+    AND
     `date` = '2020-06-20';
     ```
 - Selezionare tutti i corsi di laurea magistrale *(38)*
@@ -49,7 +49,7 @@ laurea *(286)*
     FROM `departments`;
     ```
 
-- Quanti s  ```ono gli insegnanti che non hanno un numero di telefono? *(50)*
+- Quanti sono gli insegnanti che non hanno un numero di telefono? *(50)*
     ```sql
     SELECT *  
     FROM `teachers`  
@@ -61,14 +61,14 @@ laurea *(286)*
     SELECT COUNT(*) AS `numero_iscritti`,  YEAR(`enrolment_date`) AS `anno_accademico`  
     FROM `students`  
     GROUP BY `anno_accademico`  
-    ORDER   ```BY `anno_accademico`;
+    ORDER BY `anno_accademico`;
     ```
 - Contare gli insegnanti che hanno l'ufficio nello stesso edificio
     ```sql
     SELECT COUNT(*) AS `numero_insegnanti`, `office_address` AS `indirizzo_ufficio`  
     FROM `teachers`  
     GROUP BY `indirizzo_ufficio`  
-    HAVING  ``` `numero_insegnanti` > 1  
+    HAVING `numero_insegnanti` > 1  
     ORDER BY `indirizzo_ufficio`;
     ```
 - Calcolare la media dei voti di ogni appello d'esame
@@ -76,7 +76,7 @@ laurea *(286)*
     SELECT AVG(`vote`) AS `media_voti`, `exam_id` AS `appello_esame`  
     FROM `exam_student`  
     GROUP BY `appello_esame`  
-    ORDER   ```BY `appello_esame`;
+    ORDER BY `appello_esame`;
     ```
 - Contare quanti corsi di laurea ci sono per ogni dipartimento
     ```sql

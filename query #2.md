@@ -67,7 +67,7 @@ Matematica (54)
     ON `courses`.`degree_id` = `degrees`.`id`  
     INNER JOIN `departments`  
     ON `degrees`.`department_id` = `departments`.`id`  
-    WHERE `departments`.`name` = 'Dipartimento di Matematica'  
+    WHERE `departments`.`name` LIKE '%Matematica'  
     ORDER BY `teachers`.`surname`;
     ```
     ## BONUS
@@ -75,5 +75,15 @@ Matematica (54)
 per ogni esame, stampando anche il voto massimo. Successivamente,
 filtrare i tentativi con voto minimo 18.
     ```sql
-    SELECT
+    SELECT `students`.`id` AS `student_id`, `students`.`registration_number` AS `student_registration_number`, `courses`.`name` AS `course_name`, `courses`.`year` AS `course_year`, COUNT(`exam_student`.`exam_id`) AS `exam_attempts`, MAX(`exam_student`.`vote`) AS `max_vote`
+    FROM `students`
+    INNER JOIN `exam_student`
+    ON `students`.`id` = `exam_student`.`student_id`
+    INNER JOIN `exams`
+    ON `exam_student`.`exam_id` = `exams`.`id`
+    INNER JOIN `courses`
+    ON `exams`.`course_id` = `courses`.`id`
+    WHERE `exam_student`.`vote` >= 18
+    GROUP BY `students`.`id`
+    ORDER BY `student_registration_number`;
     ```
